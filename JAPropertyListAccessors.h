@@ -51,7 +51,7 @@ CHANGE LOG
 	1.0			Initial release.
 
 
-Copyright © 2007–20010 Jens Ayton
+Copyright © 2007–2010 Jens Ayton
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal

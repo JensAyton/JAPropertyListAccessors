@@ -1,0 +1,68 @@
+JAPropertyListAccessors
+
+Convenience accessors for NSArray, NSDictionary and NSUserDefaults.
+In addition to being convenient, these perform type checking. Which is,
+y’know, good to have. Each method has a ja_<type>AtIndex: or ja_<type>ForKey:
+variant and a ja:<type>AtIndex:defaultValue:/<type>ForKey:defaultValue:
+variant. The default value for the simpler variants is always 0, NO or nil.
+
+Note on types: ideally, stdint.h types would be used for integers. However,
+NSNumber doesn’t do this, so doing so portably would add new complications.
+
+The various integer methods will always clamp values to the range of the
+return type, rather than truncating like NSNumber.
+
+The “Integer” variants are intended to be used with NSInteger variables.
+They’re typed long, which is the same size as NSInteger on all platforms.
+Similarly, all array indices are typed unsigned long.
+
+Set accessors aren’t provided for all integer types, since there are no
+overflow issues in those cases.
+
+The “non-negative float”/“non-negative double” variants will clamp read values
+to zero if negative, but will return a negative defaultValue unchanged.
+
+Functions used to convert objects to various numerical types are at the bottom
+of the header.
+
+Set accessors automatically convert arrays to set if necessary. String
+accessors automatically convert NSNumbers and NSDates (but extracting dates and
+using NSDateFormatter is generally a better plan if a date is what you expect).
+
+Array accessors return default value rather than throwing if index is out of
+bounds -- except objectAtIndex:defaultValue:, for parity with objectAtIndex:.
+The methods objectAtIndexNoThrow:[defaultValue:] are provided to get this
+behaviour for arbitrary objects.
+
+
+CHANGE LOG
+    1.1         Added ja_ prefix to all methods. Unprefixed category methods
+                on framework classes are bad - and in this case caused at
+                least one crashing conflict with a third-party input manager
+                hack.
+    1.0.2       Objective-C++ compatible.
+    1.0.1       Default value (rather than nil) is now returned when
+                conversion to string fails.
+                String conversion now uses -stringValue if available.
+    1.0         Initial release.
+
+
+Copyright © 2007–2010 Jens Ayton
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

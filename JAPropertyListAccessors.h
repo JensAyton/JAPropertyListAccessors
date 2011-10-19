@@ -1,7 +1,7 @@
 /*
 
 JAPropertyListAccessors.h
-Version 1.1
+Version 1.2
 
 Convenience accessors for NSArray, NSDictionary and NSUserDefaults.
 In addition to being convenient, these perform type checking. Which is,
@@ -40,6 +40,7 @@ behaviour for arbitrary objects.
 
 
 CHANGE LOG
+	1.2			ARC compatibility.
 	1.1			Added ja_ prefix to all methods. Unprefixed category methods
 				on framework classes are bad - and in this case caused at
 				least one crashing conflict with a third-party input manager
@@ -51,7 +52,7 @@ CHANGE LOG
 	1.0			Initial release.
 
 
-Copyright © 2007–2010 Jens Ayton
+Copyright © 2007–2011 Jens Ayton
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal

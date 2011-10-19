@@ -1,10 +1,10 @@
 /*
 
 JAPropertyListAccessors.m
-Version 1.1
+Version 1.2
 
 
-Copyright © 2007–2010 Jens Ayton
+Copyright © 2007–2011 Jens Ayton
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal
@@ -1187,7 +1187,7 @@ double JANonNegativeDoubleFromObject(id object, double defaultValue)
 static NSSet *SetForObject(id object, NSSet *defaultValue)
 {
 	if ([object isKindOfClass:[NSArray class]])  return [NSSet setWithArray:object];
-	else if ([object isKindOfClass:[NSSet class]])  return [[object copy] autorelease];
+	else if ([object isKindOfClass:[NSSet class]])  return [NSSet setWithSet:object];
 	
 	else return defaultValue;
 }

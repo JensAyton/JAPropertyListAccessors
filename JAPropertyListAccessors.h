@@ -364,15 +364,6 @@ extern "C" {
 
 // *** Value extraction utilities ***
 
-#ifndef JA_GCC_ATTR
-#ifdef __GNUC__
-#define JA_GCC_ATTR(x) __attribute__(x)
-#else
-#define JA_GCC_ATTR(x)
-#endif
-#define JA_PROPERTY_LIST_ACCESSORS_DEFINED_JA_GCC_ATTR 1
-#endif
-
 
 /*	Utility function to interpret a boolean. May be an NSNumber or any of the
 	following strings (case-insensitive):
@@ -393,7 +384,7 @@ float JANonNegativeFloatFromObject(id object, float defaultValue);
 double JANonNegativeDoubleFromObject(id object, double defaultValue);
 
 
-static inline long long JAClampInteger(long long value, long long minValue, long long maxValue) JA_GCC_ATTR((always_inline));
+static inline long long JAClampInteger(long long value, long long minValue, long long maxValue) __attribute__((always_inline));
 long long JALongLongFromObject(id object, long long defaultValue);
 unsigned long long JAUnsignedLongLongFromObject(id object, unsigned long long defaultValue);
 
@@ -467,10 +458,6 @@ JA_DEFINE_CLAMP_PAIR(long, Long, LONG)
 #undef JA_DEFINE_CLAMP_PAIR
 #undef JA_ALIAS_CLAMP_LONG_LONG
 #undef JA_ALIAS_CLAMP_PAIR_LONG_LONG
-#ifdef JA_PROPERTY_LIST_ACCESSORS_DEFINED_JA_GCC_ATTR
-#undef JA_PROPERTY_LIST_ACCESSORS_DEFINED_JA_GCC_ATTR
-#undef JA_GCC_ATTR
-#endif
 
 
 #if __cplusplus

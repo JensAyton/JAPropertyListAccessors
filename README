@@ -36,6 +36,7 @@ behaviour for arbitrary objects.
 
 
 CHANGE LOG
+	1.2			ARC compatibility.
     1.1         Added ja_ prefix to all methods. Unprefixed category methods
                 on framework classes are bad - and in this case caused at
                 least one crashing conflict with a third-party input manager

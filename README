@@ -3,7 +3,7 @@ JAPropertyListAccessors
 Convenience accessors for NSArray, NSDictionary and NSUserDefaults.
 In addition to being convenient, these perform type checking. Which is,
 y’know, good to have. Each method has a ja_<type>AtIndex: or ja_<type>ForKey:
-variant and a ja:<type>AtIndex:defaultValue:/<type>ForKey:defaultValue:
+variant and a ja_<type>AtIndex:defaultValue:/ja_<type>ForKey:defaultValue:
 variant. The default value for the simpler variants is always 0, NO or nil.
 
 Note on types: ideally, stdint.h types would be used for integers. However,
@@ -36,7 +36,7 @@ behaviour for arbitrary objects.
 
 
 CHANGE LOG
-	1.2			ARC compatibility.
+    1.2         ARC compatibility.
     1.1         Added ja_ prefix to all methods. Unprefixed category methods
                 on framework classes are bad - and in this case caused at
                 least one crashing conflict with a third-party input manager

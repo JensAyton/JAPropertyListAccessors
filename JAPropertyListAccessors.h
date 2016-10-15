@@ -298,15 +298,6 @@ SOFTWARE.
 - (NSDictionary *) ja_dictionaryForKey:(NSString *)key defaultValue:(NSDictionary *)value;
 - (NSData *) ja_dataForKey:(NSString *)key defaultValue:(NSData *)value;
 
-// Default: nil
-// - (id) objectForKey:(NSString *)key;	// Defined in framework
-- (id) ja_objectOfClass:(Class)aClass forKey:(NSString *)key;
-// - (NSString *) stringForKey:(NSString *)key;	// Defined in framework
-// - (NSArray *) arrayForKey:(NSString *)key;	// Defined in framework
-- (NSSet *) ja_setForKey:(NSString *)key;
-// - (NSDictionary *) dictionaryForKey:(NSString *)key;	// Defined in framework
-// - (NSData *) dataForKey:(NSString *)key;	// Defined in framework
-
 @end
 
 
@@ -414,7 +405,7 @@ static inline long long JAClampInteger(long long value, long long minValue, long
 #define JA_DEFINE_CLAMP(type, typeName, min, max) \
 	static inline type JA ## typeName ## FromObject(id object, type defaultValue) \
 	{ \
-		return JAClampInteger(JALongLongFromObject(object, defaultValue), min, max); \
+		return (type)JAClampInteger(JALongLongFromObject(object, defaultValue), min, max); \
 	}
 
 #define JA_DEFINE_CLAMP_PAIR(type, typeName, minMaxSymb) \
